@@ -192,7 +192,7 @@ export default function App() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/salesforce/enquiry', {
+      const response = await fetch('https://sparklynh-web.onrender.com/api/salesforce/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -583,7 +583,7 @@ export default function App() {
                     On-Ground Event Logistics Portal
                   </h3>
                   <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                    Real-time attendee desk management system jisme millisecond check-in scans, spot badge generation, live headcount analytics aur sync dashboard enable kiya.
+                    Developed a real-time attendee desk management system featuring millisecond-fast check-in scans, on-the-spot badge generation, live headcount analytics, and a synchronized dashboard.
                   </p>
                 </div>
               </div>
@@ -617,7 +617,7 @@ export default function App() {
                     Precision 2D/3D Design Pipeline
                   </h3>
                   <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                    Custom mechanical component blueprints, architectural spatial layouts, aur interactive 3D web model previews jisse fabrication aur manufacturing workflows error-free rahein.
+                  Developed custom mechanical component blueprints, architectural spatial layouts, and interactive 3D web model previews to ensure accuracy and minimize errors in fabrication and manufacturing workflows.
                   </p>
                 </div>
               </div>
@@ -685,7 +685,7 @@ export default function App() {
                     Intelligent Document & Query Pipeline
                   </h3>
                   <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                    Custom vector pipeline jo invoices, contracts aur company manuals ko scan karke direct structured output nikaalti hai aur CRM/DB me auto-populate karti hai.
+            Developed a custom vector pipeline that scans invoices, contracts, and company manuals, extracts structured data, and automatically populates CRM systems and databases.
                   </p>
                 </div>
               </div>
@@ -1445,7 +1445,7 @@ export default function App() {
                             disabled={isSubmitting}
                             value={leadForm.name}
                             onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                            placeholder="Lakshya Soni"
+                            placeholder=""
                             className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
                           />
                         </div>
@@ -1459,7 +1459,7 @@ export default function App() {
                             disabled={isSubmitting}
                             value={leadForm.email}
                             onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                            placeholder="lakshya@enterprise.com"
+                            placeholder=""
                             className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
                           />
                         </div>
@@ -1476,7 +1476,7 @@ export default function App() {
                             disabled={isSubmitting}
                             value={leadForm.phone}
                             onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
-                            placeholder="+91 98281 24829"
+                            placeholder=""
                             className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
                           />
                         </div>
@@ -1489,7 +1489,7 @@ export default function App() {
                             disabled={isSubmitting}
                             value={leadForm.company}
                             onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })}
-                            placeholder="Your Company / Org"
+                            placeholder=""
                             className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
                           />
                         </div>
@@ -1642,7 +1642,7 @@ export default function App() {
                         disabled={isSubmitting}
                         value={leadForm.name}
                         onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                        placeholder="Lakshya Soni"
+                        placeholder=""
                         className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
                       />
                     </div>
@@ -1656,7 +1656,7 @@ export default function App() {
                         disabled={isSubmitting}
                         value={leadForm.email}
                         onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                        placeholder="lakshya@enterprise.com"
+                        placeholder=""
                         className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
                       />
                     </div>
@@ -1673,7 +1673,7 @@ export default function App() {
                         disabled={isSubmitting}
                         value={leadForm.phone}
                         onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
-                        placeholder="+91 98281 24829"
+                        placeholder=""
                         className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
                       />
                     </div>
@@ -1686,7 +1686,7 @@ export default function App() {
                         disabled={isSubmitting}
                         value={leadForm.company}
                         onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })}
-                        placeholder="Your Startup / Enterprise"
+                        placeholder="e"
                         className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
                       />
                     </div>
@@ -1768,7 +1768,7 @@ export default function App() {
                     ) : (
                       <>
                         <Send className="w-4 h-4 text-white" />
-                        <span>Send Project Details & Schedule Call</span>
+                        <span>Contact Us </span>
                       </>
                     )}
                   </button>
