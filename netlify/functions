@@ -1,0 +1,72 @@
+export const handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  const { name, email, phone, company, service, budget, meetingSlot, message } = JSON.parse(event.body || '{}');
+
+  const LOGIN_URL = 'https://orgfarm-c4235fd9d8-dev-ed.develop.my.salesforce.com';
+  const CLIENT_ID = '3MVG91oqviqJKoEF8vCuUp9weYZ9nkGjR..Ve3QEn.LTI_v3aWooqXCjysZdFuG10IfAXXEmX1B2RnGMXJf6t';
+  const CLIENT_SECRET = '9F1D2720294E0BE4571EC3CCC0BC76FD6560D48B1B6DF959D095CE311A9D2B0C';
+
+  const nameParts = (name || '').trim().split(' ');
+  const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : '';
+  const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : (name || 'Website Lead');
+
+  try {
+    // 1. OAuth Token
+    const tokenParams = new URLSearchParams({
+      grant_type: 'client_credentials',
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+    });
+
+    const tokenRes = await fetch(`${LOGIN_URL}/services/oauth2/token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: tokenParams.toString(),
+    });
+
+    const tokenData = await tokenRes.json();
+    if (!tokenRes.ok) {
+      return { statusCode: tokenRes.status, body: JSON.stringify(tokenData) };
+    }
+
+    const { access_token, instance_url } = tokenData;
+    const authHeaders = {
+      'Authorization': `Bearer ${access_token}`,
+      'Content-Type': 'application/json',
+    };
+
+    // 2. Create Contact (Jisse aapka Flow trigger hoga)
+    const contactPayload = {
+      FirstName: firstName,
+      LastName: lastName,
+      Email: email,
+      Phone: phone,
+      LeadSource: 'Sparklynh Website Estimator',
+      Description: `Company: ${company}\nService: ${service}\nBudget: ${budget}\nMeeting Slot: ${meetingSlot}\nNotes: ${message}`,
+    };
+
+    const contactRes = await fetch(`${instance_url}/services/data/v59.0/sobjects/Contact`, {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify(contactPayload),
+    });
+
+    const contactData = await contactRes.json();
+    if (!contactRes.ok) {
+      return { statusCode: contactRes.status, body: JSON.stringify(contactData) };
+    }
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true, contactId: contactData.id }),
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ success: false, error: err.message }),
+    };
+  }
+};
